@@ -8,12 +8,10 @@ struct SafeArray
 
 SafeArray createArray(int size)
 {
-    SafeArray array;
-
-    array.data = new int[size]{};
-    array.size = size;
-
-    return array;
+    SafeArray arr;
+    arr.data = new int[size]{};
+    arr.size = size;
+    return arr;
 }
 
 int& getElement(SafeArray& arr, int index)
@@ -21,20 +19,52 @@ int& getElement(SafeArray& arr, int index)
     if (index < 0 || index >= arr.size)
     {
         std::cout << "Ошибка: индекс вне массива\n";
-
         static int s{};
         return s;
     }
     return arr.data[index];
 }
 
-void printSafe(const SafeArray& array)
+void printSafe(const SafeArray& arr)
 {
-    for (int index{}; index < array.size; index++)
+    for (int index{}; index < arr.size; index++)
     {
-        std::cout << array.data[index] << ' ';
+        std::cout << arr.data[index] << ' ';
     }
     std::cout << '\n';
+}
+
+void reSizeArray(SafeArray& arr, int M)
+{
+    int N{arr.size};
+    if (M < 0)
+    {
+        std::cout << "Ошибка: размер не может быть отрицательным\n";
+        return;
+    }
+    int* newD{new int[M]{}};
+    int Copiryemie{};
+    if (M < N)
+    {
+        std::cout << "Удалённые элементы:\n";
+        for (int index{M}; index < N; index++)
+        {
+            std::cout << arr.data[index] << ' ';
+        }
+        std::cout << '\n';
+        Copiryemie = M;
+    }
+    else
+    {
+        Copiryemie = N;
+    }
+    for (int index{}; index < Copiryemie; index++)
+    {
+        newD[index] = arr.data[index];
+    }
+    delete[] arr.data;
+    arr.data = newD;
+    arr.size = M;
 }
 
 int main()
@@ -47,15 +77,25 @@ int main()
     std::cout << "Ошибка: размер должен быть больше нуля\n";
     return 1;
     }
-    SafeArray mArray{createArray(size)};
+    SafeArray arr{createArray(size)};
     std::cout << "Введите элементы массива:\n";
-    for (int index{}; index < mArray.size; index++)
+    for (int index{}; index < arr.size; index++)
     {
-        std::cin >> mArray.data[index];
+        std::cin >> arr.data[index];
     }
     std::cout << "Исходный массив:\n";
-    printSafe(mArray);
-    getElement(mArray, 2) = 999;
+    printSafe(arr);
+    getElement(arr, 2) = 999;
     std::cout << "После изменения третьего элемента:\n";
-    printSafe(mArray);
+    printSafe(arr);
+    int M{};
+    std::cout << "Введите новый размер массива:\n";
+    std::cin >> M;
+    reSizeArray(arr, M);
+    std::cout << "После изменения размера:\n";
+    printSafe(arr);
+    delete[] arr.data;
+    arr.data = nullptr;
+    arr.size = 0;
+    return 0;
 }
