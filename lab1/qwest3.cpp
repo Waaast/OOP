@@ -1,11 +1,24 @@
+/**
+ * @file qwest3.cpp
+ * @brief Третье задание лабораторной работы №1
+ * @details Программа реализует безопасный динамический массив, проверку индексов и изменение размера массива.
+ */
 #include <iostream>
-
+/**
+ * @struct SafeArray
+ * @brief Хранит динамический массив и количество его элементов
+ */
 struct SafeArray
 {
-    int* data;
-    int size;
+    int* data; ///< Указатель на динамический массив.
+    int size;  ///< Количество элементов массива.
 };
-
+/**
+ * @brief Создаёт безопасный динамический массив
+ * @details Функция выделяет память для указанного количества элементов и сохраняет адрес и размер в структуре SafeArray
+ * @param size Размер создаваемого массива
+ * @return Структура SafeArray с созданным динамическим массивом
+ */
 SafeArray createArray(int size)
 {
     SafeArray arr;
@@ -13,7 +26,13 @@ SafeArray createArray(int size)
     arr.size = size;
     return arr;
 }
-
+/**
+ * @brief Возвращает ссылку на элемент массива
+ * @details Функция проверяет индекс. Если индекс некорректен, выводится сообщение об ошибке и возвращается ссылка на статическую переменную-заглушку
+ * @param arr Ссылка на структуру SafeArray
+ * @param index Индекс требуемого элемента
+ * @return Ссылка на элемент массива или на переменную-заглушку
+ */
 int& getElement(SafeArray& arr, int index)
 {
     if (index < 0 || index >= arr.size)
@@ -24,7 +43,11 @@ int& getElement(SafeArray& arr, int index)
     }
     return arr.data[index];
 }
-
+/**
+ * @brief Выводит элементы безопасного массива
+ * @details Функция последовательно выводит элементы через пробел, не изменяя структуру и её данные
+ * @param arr Константная ссылка на структуру SafeArray
+ */
 void printSafe(const SafeArray& arr)
 {
     for (int index{}; index < arr.size; index++)
@@ -33,7 +56,13 @@ void printSafe(const SafeArray& arr)
     }
     std::cout << '\n';
 }
-
+/**
+ * @brief Изменяет размер динамического массива
+ * @details Функция создаёт новый массив размера M и копирует сохраняемые элементы. При уменьшении размера удаляемые элементы выводятся на экран 
+ * При увеличении новые элементы равны нулю. Старая динамическая память освобождается
+ * @param arr Ссылка на изменяемую структуру SafeArray
+ * @param M Новый размер массива
+ */
 void reSizeArray(SafeArray& arr, int M)
 {
     int N{arr.size};
@@ -66,7 +95,11 @@ void reSizeArray(SafeArray& arr, int M)
     arr.data = newD;
     arr.size = M;
 }
-
+/**
+ * @brief Выполняет третье задание лабораторной работы
+ * @details Функция создаёт SafeArray, заполняет и выводит его, демонстрирует безопасный доступ к элементу, изменяет размер массива и освобождает динамическую память
+ * @return Код завершения: 0 при успехе, 1 при неправильном размере
+ */
 int main()
 {
     int size{};
@@ -74,8 +107,8 @@ int main()
     std::cin >> size;
     if (size <= 0)
     {
-    std::cout << "Ошибка: размер должен быть больше нуля\n";
-    return 1;
+        std::cout << "Ошибка: размер должен быть больше нуля\n";
+        return 1;
     }
     SafeArray arr{createArray(size)};
     std::cout << "Введите элементы массива:\n";
