@@ -67,7 +67,7 @@ void printMatrix(
     int** matrix,
     int rows, int cols,
     bool showBorders = true,
-    std::string title = "Matrix")
+    std::string title = "\nMatrix")
 {
     std::cout << title << '\n';
     if (showBorders)
@@ -123,9 +123,11 @@ int main()
         std::cout << "Ошибка: размеры должны быть больше нуля\n";
         return 1;
     }
-    int** matrix{allocateMatrix(rows, cols)};
+    int** matrix {allocateMatrix(rows, cols)};
     fillMatrix(matrix, rows, cols);
-    printMatrix(matrix, rows, cols, true, std::string("\nОценки")); 
+    printMatrix(matrix, rows, cols); 
+    printMatrix(matrix, rows, cols, true); 
+    printMatrix(matrix, rows, cols, false, "\nОценки"); 
     freeMatrix(matrix, rows);
     matrix = nullptr;
     return 0;
