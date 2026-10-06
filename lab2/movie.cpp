@@ -1,6 +1,8 @@
 #include "movie.h"
 #include <iostream>
 
+int Movie::objectCount = 0;
+
 // Дата по умолчанию
 ReleaseDate::ReleaseDate()
     : day(1), month(1), year(2026)
@@ -49,7 +51,10 @@ bool ReleaseDate::isValid() const
 }
 // Фильм по умолчанию
 Movie::Movie()
-    : title("Без названия"), duration(0), rating(0.0), releaseDate() {}
+    : title("Без названия"), duration(0), rating(0.0), releaseDate()
+{
+    objectCount++;
+}
 
 // Фильм с названием и продолжительностью
 Movie::Movie(string title, int duration)
@@ -64,6 +69,7 @@ Movie::Movie(string title, int duration)
     {
         this->duration = 0;
     }
+    objectCount++;
 }
 
 // Фильм со всеми заданными значениями
@@ -83,6 +89,7 @@ Movie::Movie(string title, int duration, double rating, ReleaseDate releaseDate)
     {
         this->rating = 0.0;
     }
+    objectCount++;
 }
 
 // Получение названия
@@ -154,4 +161,16 @@ void Movie::print() const
     cout << "Дата выхода: ";
     releaseDate.print();
     cout << endl;
+}
+
+// Деструктор
+Movie::~Movie()
+{
+    objectCount--;
+}
+
+// Получение количества существующих фильмов
+int Movie::getObjectCount()
+{
+    return objectCount;
 }

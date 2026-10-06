@@ -28,10 +28,16 @@ private:
     double rating;
     ReleaseDate releaseDate;
 
+    static int objectCount;
+
 public:
     Movie();
     Movie(string title, int duration);
     Movie(string title, int duration, double rating, ReleaseDate releaseDate);
+
+    ~Movie();
+
+    static int getObjectCount();
 
     string getTitle() const;
     int getDuration() const;
