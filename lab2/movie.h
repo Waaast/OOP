@@ -9,7 +9,11 @@ private:
     int day;
     int month;
     int year;
+
+    bool isValid() const;
 public:
+    ReleaseDate();
+    ReleaseDate(int day, int month, int year);
 };
 
 // Фильм
@@ -19,7 +23,11 @@ private:
     int duration;
     double rating;
     ReleaseDate releaseDate;
+
 public:
+    Movie();
+    Movie(string title, int duration);
+    Movie(string title, int duration, double rating, ReleaseDate releaseDate);
 };
 
 #endif
