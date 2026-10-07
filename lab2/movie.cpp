@@ -136,7 +136,7 @@ bool Movie::changeRating(double newRating)
 // Изменение продолжительности
 bool Movie::changeDuration(int newDuration)
 {
-    if (newDuration < 0)
+    if (newDuration <= 0)
     {
         return false;
     }
