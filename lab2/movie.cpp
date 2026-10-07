@@ -156,7 +156,7 @@ void ReleaseDate::print() const
 void Movie::print() const
 {
     cout << "Название: " << title << endl;
-    cout << "Продолжительность: " << duration << endl;
+    cout << "Продолжительность: " << duration << " мин." << endl;
     cout << "Рейтинг: " << rating << endl;
     cout << "Дата выхода: ";
     releaseDate.print();

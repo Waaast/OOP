@@ -40,4 +40,4 @@ class Movie {
 
 Movie *-- ReleaseDate
 
-@endumlD
+@enduml

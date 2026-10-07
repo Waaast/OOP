@@ -1,8 +1,19 @@
+/**
+ * @file main.cpp
+ * @brief Тестирование класса Movie.
+ */
+
 #include "movie.h"
 #include <iostream>
 
 using namespace std;
 
+/**
+ * @brief Главная функция программы.
+ * @details Создает объекты класса Movie, выполняет корректные и некорректные
+ * изменения, проверяет независимость объектов и работу счетчика объектов.
+ * @return 0 при успешном завершении программы.
+ */
 int main()
 {
     Movie movie1;
@@ -47,17 +58,15 @@ int main()
     cout << "\nФильм 3:" << endl;
     movie3.print();
 
-    cout << "\nКоличество объектов Movie: "
-     << Movie::getObjectCount() << endl;
+    cout << "\nКоличество объектов Movie: " << Movie::getObjectCount() << endl;
 
     cout << "\nПроверка счетчика объектов:" << endl;
     cout << "Сейчас объектов: " << Movie::getObjectCount() << endl;
     {
-    Movie temporaryMovie;
-    cout << "\nВременный фильм:" << endl;
-    temporaryMovie.print();
-    cout << "После создания временного объекта: "
-         << Movie::getObjectCount() << endl;
+        Movie temporaryMovie;
+        cout << "\nВременный фильм:" << endl;
+        temporaryMovie.print();
+        cout << "После создания временного объекта: " << Movie::getObjectCount() << endl;
     }
     cout << "После уничтожения временного объекта: " << Movie::getObjectCount() << endl;
 
