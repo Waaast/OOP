@@ -1,0 +1,43 @@
+@startuml
+
+class ReleaseDate {
+    - day : int
+    - month : int
+    - year : int
+    - isValid() : bool
+    
+    + ReleaseDate()
+    + ReleaseDate(day : int, month : int, year : int)
+    + print() : void
+}
+
+class Movie {
+    - title : string
+    - duration : int
+    - rating : double
+    - releaseDate : ReleaseDate
+    - {static} objectCount : int
+
+    + Movie()
+    + Movie(title : string, duration : int)
+    + Movie(title : string, duration : int, rating : double, releaseDate : ReleaseDate)
+    + ~Movie()
+
+    + {static} getObjectCount() : int
+
+    + getTitle() : string
+    + getDuration() : int
+    + getRating() : double
+    + getReleaseDate() : ReleaseDate
+
+    + changeTitle(newTitle : string) : bool
+    + changeRating(newRating : double) : bool
+    + changeDuration(newDuration : int) : bool
+    + changeReleaseDate(newDate : ReleaseDate) : void
+
+    + print() : void
+}
+
+Movie *-- ReleaseDate
+
+@endumlD
