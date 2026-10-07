@@ -53,8 +53,11 @@ int main()
     cout << "\nПроверка счетчика объектов:" << endl;
     cout << "Сейчас объектов: " << Movie::getObjectCount() << endl;
     {
-        Movie temporaryMovie;
-        cout << "После создания временного объекта: " << Movie::getObjectCount() << endl;
+    Movie temporaryMovie;
+    cout << "\nВременный фильм:" << endl;
+    temporaryMovie.print();
+    cout << "После создания временного объекта: "
+         << Movie::getObjectCount() << endl;
     }
     cout << "После уничтожения временного объекта: " << Movie::getObjectCount() << endl;
 
