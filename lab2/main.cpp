@@ -40,6 +40,23 @@ int main()
     cout << "Фильм 1:" << endl;
     movie1.print();
 
+    cout << "\nПроверка независимости объектов:" << endl;
+    movie2.changeRating(9.0);
+    cout << "Фильм 2 после изменения:" << endl;
+    movie2.print();
+    cout << "\nФильм 3:" << endl;
+    movie3.print();
+
+    cout << "\nКоличество объектов Movie: "
+     << Movie::getObjectCount() << endl;
+
+    cout << "\nПроверка счетчика объектов:" << endl;
+    cout << "Сейчас объектов: " << Movie::getObjectCount() << endl;
+    {
+        Movie temporaryMovie;
+        cout << "После создания временного объекта: " << Movie::getObjectCount() << endl;
+    }
+    cout << "После уничтожения временного объекта: " << Movie::getObjectCount() << endl;
 
     return 0;
 }
