@@ -1,29 +1,35 @@
 #include "Event.h"
+
 #include <iostream>
 using namespace std;
 
 int Event::eventCount = 0;
 
 Event::Event()
-    : name("Без названия"), startTime(0), endTime(0), completed(false) {
+    : name("Без названия"), startTime(0), endTime(0), completed(false)
+{
     eventCount++;
 }
 
 Event::Event(string name, Time start)
-    : name(name), startTime(start), endTime(start), completed(false) {
+    : name(name), startTime(start), endTime(start), completed(false)
+{
     eventCount++;
 }
 
 Event::Event(string name, Time start, Time end)
-    : name(name), startTime(start), endTime(end), completed(false) {
+    : name(name), startTime(start), endTime(end), completed(false)
+{
     eventCount++;
 }
 
-Event::~Event() {
+Event::~Event()
+{
     eventCount--;
 }
 
-void Event::print() const {
+void Event::print() const
+{
     cout << (completed ? "[✓] " : "[✗] ");
 
     startTime.print();
@@ -33,10 +39,12 @@ void Event::print() const {
     cout << " | " << name << endl;
 }
 
-void Event::toggleCompleted() const {
+void Event::toggleCompleted() const
+{
     completed = !completed;
 }
 
-int Event::getEventCount() {
+int Event::getEventCount()
+{
     return eventCount;
 }

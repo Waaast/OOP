@@ -3,10 +3,10 @@
 
 class Time
 {
-private:
+  private:
     int totalSeconds;
 
-public:
+  public:
     Time(int hours, int minutes, int seconds);
     Time(int minutes, int seconds);
     explicit Time(int seconds);
@@ -18,27 +18,27 @@ public:
     void setTime(int hours, int minutes, int seconds);
     void print() const;
 
-    Time& operator++();
+    Time &operator++();
     Time operator++(int);
-    Time& operator--();
+    Time &operator--();
     Time operator--(int);
 
-    Time& operator+=(const Time& other);
-    Time& operator-=(const Time& other);
-    Time& operator*=(int number);
-    Time& operator/=(int number);
+    Time &operator+=(const Time &other);
+    Time &operator-=(const Time &other);
+    Time &operator*=(int number);
+    Time &operator/=(int number);
 
-    Time operator+(const Time& other) const;
-    Time operator-(const Time& other) const;
+    Time operator+(const Time &other) const;
+    Time operator-(const Time &other) const;
     Time operator*(int number) const;
     Time operator/(int number) const;
 
-    bool operator<(const Time& other) const;
-    bool operator>(const Time& other) const;
-    bool operator<=(const Time& other) const;
-    bool operator>=(const Time& other) const;
-    bool operator==(const Time& other) const;
-    bool operator!=(const Time& other) const;
+    bool operator<(const Time &other) const;
+    bool operator>(const Time &other) const;
+    bool operator<=(const Time &other) const;
+    bool operator>=(const Time &other) const;
+    bool operator==(const Time &other) const;
+    bool operator!=(const Time &other) const;
 };
 
 #endif

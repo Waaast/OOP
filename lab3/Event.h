@@ -2,10 +2,12 @@
 #define EVENT_H
 
 #include <string>
+
 #include "Time.h"
 
-class Event {
-private:
+class Event
+{
+  private:
     std::string name;
     Time startTime;
     Time endTime;
@@ -13,7 +15,7 @@ private:
     mutable bool completed;
     static int eventCount;
 
-public:
+  public:
     Event();
     Event(std::string name, Time start);
     Event(std::string name, Time start, Time end);
