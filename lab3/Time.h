@@ -32,6 +32,13 @@ public:
     Time operator-(const Time& other) const;
     Time operator*(int number) const;
     Time operator/(int number) const;
+
+    bool operator<(const Time& other) const;
+    bool operator>(const Time& other) const;
+    bool operator<=(const Time& other) const;
+    bool operator>=(const Time& other) const;
+    bool operator==(const Time& other) const;
+    bool operator!=(const Time& other) const;
 };
 
 #endif

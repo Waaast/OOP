@@ -114,3 +114,27 @@ Time Time::operator/(int number) const {
     result /= number;
     return result;
 }
+
+bool Time::operator<(const Time& other) const {
+    return totalSeconds < other.totalSeconds;
+}
+
+bool Time::operator>(const Time& other) const {
+    return totalSeconds > other.totalSeconds;
+}
+
+bool Time::operator<=(const Time& other) const {
+    return totalSeconds <= other.totalSeconds;
+}
+
+bool Time::operator>=(const Time& other) const {
+    return totalSeconds >= other.totalSeconds;
+}
+
+bool Time::operator==(const Time& other) const {
+    return totalSeconds == other.totalSeconds;
+}
+
+bool Time::operator!=(const Time& other) const {
+    return totalSeconds != other.totalSeconds;
+}
