@@ -1,0 +1,59 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Time {
+    - totalSeconds : int
+    --
+    + Time(hours : int, minutes : int, seconds : int)
+    + Time(minutes : int, seconds : int)
+    + Time(seconds : int) <<explicit>>
+    --
+    + getHours() : int
+    + getMinutes() : int
+    + getSeconds() : int
+    + setTime(hours : int, minutes : int, seconds : int) : void
+    + print() : void
+    --
+    + operator++() : Time&
+    + operator++(int) : Time
+    + operator--() : Time&
+    + operator--(int) : Time
+    --
+    + operator+=(other : const Time&) : Time&
+    + operator-=(other : const Time&) : Time&
+    + operator*=(number : int) : Time&
+    + operator/=(number : int) : Time&
+    --
+    + operator+(other : const Time&) : Time
+    + operator-(other : const Time&) : Time
+    + operator*(number : int) : Time
+    + operator/(number : int) : Time
+    --
+    + operator<(other : const Time&) : bool
+    + operator>(other : const Time&) : bool
+    + operator<=(other : const Time&) : bool
+    + operator>=(other : const Time&) : bool
+    + operator==(other : const Time&) : bool
+    + operator!=(other : const Time&) : bool
+}
+
+class Event {
+    - name : string
+    - startTime : Time
+    - endTime : Time
+    - completed : bool {mutable}
+    - eventCount : int {static}
+    --
+    + Event()
+    + Event(name : string, start : Time)
+    + Event(name : string, start : Time, end : Time)
+    + ~Event()
+    --
+    + print() : void
+    + toggleCompleted() : void
+    + getEventCount() : int {static}
+}
+
+Event "1" *-- "2" Time
+
+@enduml
