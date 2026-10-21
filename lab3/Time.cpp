@@ -54,3 +54,25 @@ void Time::print() const
          << setw(2) << getMinutes() << ":"
          << setw(2) << getSeconds() << endl;
 }
+
+Time& Time::operator++() {
+    setTime(0, 0, totalSeconds + 1);
+    return *this;
+}
+
+Time Time::operator++(int) {
+    Time old = *this;
+    ++(*this);
+    return old;
+}
+
+Time& Time::operator--() {
+    setTime(0, 0, totalSeconds - 1);
+    return *this;
+}
+
+Time Time::operator--(int) {
+    Time old = *this;
+    --(*this);
+    return old;
+}

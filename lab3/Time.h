@@ -17,6 +17,11 @@ public:
 
     void setTime(int hours, int minutes, int seconds);
     void print() const;
+
+    Time& operator++();
+    Time operator++(int);
+    Time& operator--();
+    Time operator--(int);
 };
 
 #endif
