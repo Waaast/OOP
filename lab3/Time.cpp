@@ -44,7 +44,7 @@ void Time::print() const{
     cout << setfill('0')
          << setw(2) << getHours() << ":"
          << setw(2) << getMinutes() << ":"
-         << setw(2) << getSeconds() << endl;
+         << setw(2) << getSeconds();
 }
 
 Time &Time::operator++(){
