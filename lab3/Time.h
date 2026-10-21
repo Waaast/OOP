@@ -22,6 +22,11 @@ public:
     Time operator++(int);
     Time& operator--();
     Time operator--(int);
+
+    Time& operator+=(const Time& other);
+    Time& operator-=(const Time& other);
+    Time& operator*=(int number);
+    Time& operator/=(int number);
 };
 
 #endif
