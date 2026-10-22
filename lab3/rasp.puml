@@ -1,4 +1,4 @@
-@startuml
+@startuml "Лабораторная работа 2. Класс Time и класс Event"
 skinparam classAttributeIconSize 0
 
 class Time {
