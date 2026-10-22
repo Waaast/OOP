@@ -1,9 +1,23 @@
+
 #include <iostream>
 
 #include "Event.h"
 #include "Time.h"
 using namespace std;
 
+/**
+ * @file main.cpp
+ * @brief Демонстрация работы классов Time и Event.
+ */
+
+/**
+ * @brief Главная функция программы.
+ *
+ * Демонстрирует конструкторы, перегруженные операторы,
+ * explicit, mutable, static и работу деструктора.
+ *
+ * @return 0 при успешном завершении программы.
+ */
 int main()
 {
     // Конструкторы
